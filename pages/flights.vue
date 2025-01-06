@@ -7,49 +7,35 @@
         class="rounded my-1 p-2 bg-gray-100 border border-gray-200 shadow-sm"
       >
         <!-- Опредяем тип рейса -->
-        <div v-if="search.type === 'rt'"></div>
+        <!-- <div v-if="search.type === 'rt'"></div> -->
+
         <div v-for="direction in flight.segments_direction" :key="direction">
           <h3>{{ direction }}</h3>
-          <div class="flex gap-2 bg-gray-300">
+          <div class="flex gap-2 bg-gray-300 m-2 p-2 border border-white">
+            <div>{{ flightIndex }}</div>
+
             <div
               v-for="flightIndex in direction"
-              class="flex gap-2 bg-gray-300 m-2 p-2"
+              class="flex gap-2 justify-between bg-gray-600 p-1"
             >
-              <div>{{ flightIndex }}</div>
-              <div>
-                {{ flight.segments[flightIndex].dep.date }}
-                {{ flight.segments[flightIndex].dep.time }}
+              <div class="bg-white text-right py-2 px-1">
+                <div>{{ flight.segments[flightIndex].dep.airport.code }}</div>
+                <div>
+                  {{ flight.segments[flightIndex].dep.date }}
+                  {{ flight.segments[flightIndex].dep.time }}
+                </div>
               </div>
 
-              <div>
-                {{ flight.segments[flightIndex].arr.date }}
-                {{ flight.segments[flightIndex].arr.time }}
+              <div class="bg-white text-left py-2 px-1">
+                <div>{{ flight.segments[flightIndex].arr.airport.code }}</div>
+                <div>
+                  {{ flight.segments[flightIndex].arr.date }}
+                  {{ flight.segments[flightIndex].arr.time }}
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <!--
-
-        <div v-if="search.type === 'ow'"></div>
-        <div v-if="search.type === 'mc'"></div> 
-        -->
-
-        <!--         
-        <div v-for="segment in flight.segments" class="border border-rounded-2 my-1 p-2">
-            segment
-        1    <div>
-             {{ segment.arr.date }} {{ segment.arr.time }}
-             -
-             {{ segment.dep.date }} {{ segment.dep.time }}
-           </div>
-           <div>
-             {{ segment.arr.airport.code }}
-             <small>{{ segment.arr.airport.title }}</small>
-             -
-             {{ segment.dep.airport.code }}
-             <small>{{ segment.dep.airport.title }}</small>
-           </div>  
-        </div> -->
       </div>
     </div>
   </div>
