@@ -33,7 +33,7 @@ const date = ref(new Date());
 
 <style lang="scss" scoped>
 .u-input input {
-  @apply border-none;
+  @apply border-none border-0;
 }
 
 .fake-input {
